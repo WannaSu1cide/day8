@@ -43,14 +43,10 @@ function showSuccess (input, message){
   error.classList.remove("errorColor");
   spanBar.classList.remove("errorBar");
 }
-// }
-    
-
       function checkPassword(){
         
           if(password.value.trim().length <=6 && password.value.trim().length > 0  ){
-              showError(password,"Type more than 6 character")
-          
+              showError(password,"Type more than 6 character")         
        }
         if(password.value.trim().length >6 ){
             showSuccess(password,"Success")
@@ -71,9 +67,6 @@ function showSuccess (input, message){
       }
       
     }
-    
-
-
     function isEmailError(input) {
       const emailRegex =
       /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -85,17 +78,10 @@ function showSuccess (input, message){
         showError(input, "Please enter a valid email address");
       }
     }
-      
-
-
-
-
 submit.addEventListener("click",(e)=>{
     e.preventDefault();
     checkError();
     checkPassword();
      checkConfirmPassword()
      isEmailError(email)
-  
-
 })

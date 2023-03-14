@@ -1,4 +1,82 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 body {
+    background:linear-gradient(120deg, #3ca7ee, #9b408f);
     height: 100vh;
-    background: linear-gradient(120deg, #3ca7ee, #9b408f);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+.loggin__container{
+    width: 500px;
+    background:white;
+    padding: 20px;
+    position: relative;
+    cursor: pointer;
+
+}
+h1 {
+    text-align: center;
+
+}
+.control__loggin {
+    height:70px;
+    position: relative;
+    margin-bottom:30px ;
+    margin-top: 20px;
+}
+.Loggin__Email{
+    width: 80%;
+    height: 50px;
+    margin: 20px 0 20px 0;
+    outline: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-size: 22px;
+    margin-left: 50px;
+    
+}
+::placeholder {
+    font-size: 20px;
+}
+
+.loggin__submit{
+    padding: 20px 14px 20px 14px;
+    width: 80%;
+    margin-left: 50px;
+    cursor: pointer;
+    border-radius: 25px;
+    border: none;
+}
+.No__Account {
+    margin-left: 100px;
+    margin-top: 20px;
+    font-size: 17px;
+
+}
+.signin {
+    text-decoration:none ;
+    color:blue;
+}
+.signin:hover {
+        text-decoration: underline;   
+}
+.loggin__submit:hover{
+    background:lightblue;
+    color: black;
+}
+
+.forget__account {
+    margin-left: 170px;
+    text-decoration: none;
+    color:black
+}
+.forget__account:hover {
+    text-decoration: underline;
+    color: blue;
 }
