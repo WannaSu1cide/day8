@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap');
+
+:root{
+    --color-success:#00FFFF;
+    --color-failed:red;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    height: 100vh;
+    background:linear-gradient(120deg, #3ca7ee, #9b408f);
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+
+
+    
+}
+.container {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    width: 400px;
+    position: relative;
+}
+.container h1 {
+    text-align: center;
+}
+.control-form{
+    width: 100%;
+    position: relative;
+    height: 40px;
+    margin-bottom: 20px;
+}
+
+.control-form > input{
+    width: 100%;
+   margin: 30px 0;
+    border: none;
+    height: 40px;
+    outline: none;
+    font-size: 20px;
+    border-bottom:2px solid #dadada;
+  
+  
+}
+ .spanBar {
+    width: 0%;
+    position: absolute;
+    top:68px ;
+    left: 0%;
+    border-bottom: 3px solid var(--color-success);
+    transition: 0.7s;
+}
+.input:focus ~.spanBar{
+    width: 100%;
+}
+.error {
+    
+    position: absolute;
+    left: 0;
+    top: 0;
+    top:70px;
+}
+.submit {
+    margin:50px 0 0 0   ;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    border-radius: 30px;
+    background: lightBlue;
+    color: white;
+    border: none;
+}
+.submit:hover {
+    color :white;
+    background-color: black;
+}
+::placeholder{
+    font-size: 20px;
+}
+.errorBar {
+    width: 100%;
+    border-bottom: 2px solid var(--color-failed);
+}
+.errorColor {
+    color:var(--color-failed)
+}
+.successBar{
+    width: 100%;
+    border-bottom: 2px solid lightgreen;
+
+}
+.successColor {
+    color:lightgreen;
+}
+.success{
+    color:var(--color-success);
+    position: absolute;
+    left: 0;
+    top: 0;
+    top:70px;
+}
