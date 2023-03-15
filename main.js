@@ -15,10 +15,13 @@ function checkError(){
   for(let i = 0; i < inputs.length; i++) {
     if (inputs[i].value.length === 0) {
       showError(inputs[i], "Type something..");
+      return false;
     } else if(inputs[i].value.length <=6) {
       showError(inputs[i], "You must have more than 6 character");
+      return false
     }else {
-      showSuccess(inputs[i],"Success")
+      showSuccess(inputs[i],"Success");
+      return true
     }
   }
 }
@@ -44,25 +47,31 @@ function showSuccess (input, message){
   spanBar.classList.remove("errorBar");
 }
   function checkName(input){
-    console.log(input.value)
+  
     if(input.value === ""){
         showError(username,"type something");
+        return false;
     }
     else if (input.value.length <=6 ){
       showError(username,"Type more than 6 characters");
+      return false;
     }else {
       showSuccess(username,"Success");
+      return true;
     }
+ 
+
   }
 
 
       function checkPassword(){
-        
           if(password.value.trim().length <=6 && password.value.trim().length > 0  ){
-              showError(password,"Type more than 6 character")        
+              showError(password,"Type more than 6 character");
+              return false  
        }
-        if(password.value.trim().length >6 ){
+        if(password.value.trim().length > 6 ){
             showSuccess(password,"Success");
+            return true;
        }
        
     }
@@ -70,12 +79,16 @@ function showSuccess (input, message){
       if(confirmPassword.value !== password.value && checkPassword() === true ){
         showError(confirmPassword,"Wrong password");
         confirmPassword.value = "";
+        return false
       } else if (confirmPassword.value.length <=6){
         showError(confirmPassword,"type more than 6 characters");
+        return false
       }else if (password.value === confirmPassword.value){
         showSuccess(confirmPassword,"Success");
+        return true
       }else {
-        showError(confirmPassword,"The password not match")
+        showError(confirmPassword,"The password not match");
+        return false
       }
       
     }
@@ -83,10 +96,12 @@ function showSuccess (input, message){
       const emailRegex =
       /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
       let emailError = emailRegex.test(input.value);
-      if (emailError ===false) {
+      if (emailError === false) {
         showError(email,"Invalid email");
+        return false
       } else {
         showSuccess(email,"Success");
+        return true
       }
     }
     
@@ -94,8 +109,8 @@ function showSuccess (input, message){
 
 
 
-function saveNameToLocalStorage(emai,password,username) {
-  localStorage.setItem('emai', email);
+function saveNameToLocalStorage(email,password,username) {
+  localStorage.setItem('email', email);
   localStorage.setItem("password",password);
   localStorage.setItem("username",username);
 
@@ -103,7 +118,7 @@ function saveNameToLocalStorage(emai,password,username) {
 
 function getNameFromLocalStorage(){
     localStorage.getItem("email");
-    localStorage.getItem("password")
+    localStorage.getItem("password");
 }
 function isNameInLocalStorage() {
   return localStorage.getItem('username') !== null&&
@@ -111,13 +126,13 @@ function isNameInLocalStorage() {
    localStorage.getItem('email') !== null;
 }
 
-
-
-
-
-
-
-
+  function checkAll(){
+    if(checkError()=== true && checkPassword() === true &&  isEmailError(email) === true && checkName(username) ){
+      return true
+    }else {
+      return false
+    }
+  }
 
 
 
@@ -128,9 +143,22 @@ submit.addEventListener("click",(e)=>{
     e.preventDefault();
     checkError();
     checkPassword();
-     checkConfirmPassword()
-     isEmailError(email)
-     checkName(username)
+     checkConfirmPassword();
+     isEmailError(email);
+     checkName(username);
+    if(checkAll() === true ){
+      window.location.href= "https://www.facebook.com/"
+    }else {
+      alert("Nhập hết mới được nha")
+    }
+
+    
+    //  LoopCheckSuccess([email,username,password,confirmPassword])
+    //  if(LoopCheckSuccess([email,username,password,confirmPassword])){
+    //   window.location.href= "https://www.messenger.com/t/100016837833916"
+    //  }
+    
+    
 })
 
 
