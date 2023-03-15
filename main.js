@@ -148,7 +148,7 @@ submit.addEventListener("click",(e)=>{
      isEmailError(email);
      checkName(username);
     if(checkAll() === true ){
-      window.location.href= "https://www.facebook.com/"
+      window.location.href= "./loggin.html"
     }
 
     
