@@ -1,5 +1,5 @@
 const email =document.querySelector("#email");
-const username =document.querySelector("#name");
+const username =document.querySelector("#Name");
 const password =document.querySelector("#password1");
 const confirmPassword =document.querySelector("#password2");
 const error = document.querySelectorAll(".control-form .error");
@@ -15,10 +15,13 @@ function checkError(){
   for(let i = 0; i < inputs.length; i++) {
     if (inputs[i].value.length === 0) {
       showError(inputs[i], "Type something..");
+      return false
     } else if(inputs[i].value.length <=6) {
-      showError(inputs[i], "You must have more than 6 character")
+      showError(inputs[i], "You must have more than 6 character");
+      return false;
     }else {
       showSuccess(inputs[i],"Success")
+      return true
     }
   }
 }
@@ -43,13 +46,29 @@ function showSuccess (input, message){
   error.classList.remove("errorColor");
   spanBar.classList.remove("errorBar");
 }
+  function checkName(input){
+    if(input.value === ""){
+        showError(username,"type something");
+        return false
+    }
+    else if (input.value.length <=6 ){
+      showError(username,"Type more than 6 characters");
+      return false
+    }else {
+      showSuccess(username,"Success");
+      return true
+    }
+  }
+
+
       function checkPassword(){
         
           if(password.value.trim().length <=6 && password.value.trim().length > 0  ){
               showError(password,"Type more than 6 character")         
+            
        }
         if(password.value.trim().length >6 ){
-            showSuccess(password,"Success")
+            showSuccess(password,"Success");
             return true     
        }
        
@@ -58,12 +77,16 @@ function showSuccess (input, message){
       if(confirmPassword.value !== password.value && checkPassword() === true ){
         showError(confirmPassword,"Wrong password");
         confirmPassword.value = "";
+       
       } else if (confirmPassword.value.length <=6){
         showError(confirmPassword,"type more than 6 characters");
+        return false;
       }else if (password.value === confirmPassword.value){
         showSuccess(confirmPassword,"Success");
+        return true 
       }else {
         showError(confirmPassword,"The password not match")
+        return false
       }
       
     }
@@ -72,16 +95,68 @@ function showSuccess (input, message){
       /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     
       let emailError = !emailRegex.test(input.value);
-      if (!emailError) {
-        showSuccess(input, "Success");
+      if (emailError) {
+        showError("");
+        return true;
       } else {
         showError(input, "Please enter a valid email address");
       }
     }
+    
+
+
+
+function TransferToLoggin (){
+    submit.addEventListener("click",()=>{
+      
+    })
+}
+
+function saveNameToLocalStorage(emai,password,username) {
+  localStorage.setItem('emai', email);
+  localStorage.setItem("password",password);
+  localStorage.setItem("username",username);
+
+}
+
+function getNameFromLocalStorage(){
+    localStorage.getItem("email");
+    localStorage.getItem("password")
+}
+function isNameInLocalStorage() {
+  return localStorage.getItem('username') !== null&&
+   localStorage.getItem('password') !== null &&
+   localStorage.getItem('email') !== null;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 submit.addEventListener("click",(e)=>{
     e.preventDefault();
     checkError();
     checkPassword();
      checkConfirmPassword()
      isEmailError(email)
+     checkName(username)
+    if(checkError() === true &&checkPassword()=== true && checkConfirmPassword()===true && isEmailError === true && checkName(username)===true){
+      saveNameToLocalStorage(email,password);
+    }else {
+      console.log(123)
+    }
+
 })
+
+
+
+
