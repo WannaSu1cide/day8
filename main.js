@@ -88,6 +88,7 @@ function showSuccess (input, message){
         return true
       }else {
         showError(confirmPassword,"The password not match");
+        confirmPassword.value = "";
         return false
       }
       
