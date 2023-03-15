@@ -15,13 +15,10 @@ function checkError(){
   for(let i = 0; i < inputs.length; i++) {
     if (inputs[i].value.length === 0) {
       showError(inputs[i], "Type something..");
-      return false
     } else if(inputs[i].value.length <=6) {
       showError(inputs[i], "You must have more than 6 character");
-      return false;
     }else {
       showSuccess(inputs[i],"Success")
-      return true
     }
   }
 }
@@ -47,16 +44,14 @@ function showSuccess (input, message){
   spanBar.classList.remove("errorBar");
 }
   function checkName(input){
+    console.log(input.value)
     if(input.value === ""){
         showError(username,"type something");
-        return false
     }
     else if (input.value.length <=6 ){
       showError(username,"Type more than 6 characters");
-      return false
     }else {
       showSuccess(username,"Success");
-      return true
     }
   }
 
@@ -64,12 +59,10 @@ function showSuccess (input, message){
       function checkPassword(){
         
           if(password.value.trim().length <=6 && password.value.trim().length > 0  ){
-              showError(password,"Type more than 6 character")         
-            
+              showError(password,"Type more than 6 character")        
        }
         if(password.value.trim().length >6 ){
             showSuccess(password,"Success");
-            return true     
        }
        
     }
@@ -77,40 +70,29 @@ function showSuccess (input, message){
       if(confirmPassword.value !== password.value && checkPassword() === true ){
         showError(confirmPassword,"Wrong password");
         confirmPassword.value = "";
-       
       } else if (confirmPassword.value.length <=6){
         showError(confirmPassword,"type more than 6 characters");
-        return false;
       }else if (password.value === confirmPassword.value){
         showSuccess(confirmPassword,"Success");
-        return true 
       }else {
         showError(confirmPassword,"The password not match")
-        return false
       }
       
     }
     function isEmailError(input) {
       const emailRegex =
-      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    
-      let emailError = !emailRegex.test(input.value);
-      if (emailError) {
-        showError("");
-        return true;
+      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+      let emailError = emailRegex.test(input.value);
+      if (emailError ===false) {
+        showError(email,"Invalid email");
       } else {
-        showError(input, "Please enter a valid email address");
+        showSuccess(email,"Success");
       }
     }
     
 
 
 
-function TransferToLoggin (){
-    submit.addEventListener("click",()=>{
-      
-    })
-}
 
 function saveNameToLocalStorage(emai,password,username) {
   localStorage.setItem('emai', email);
@@ -149,12 +131,6 @@ submit.addEventListener("click",(e)=>{
      checkConfirmPassword()
      isEmailError(email)
      checkName(username)
-    if(checkError() === true &&checkPassword()=== true && checkConfirmPassword()===true && isEmailError === true && checkName(username)===true){
-      saveNameToLocalStorage(email,password);
-    }else {
-      console.log(123)
-    }
-
 })
 
 
