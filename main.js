@@ -149,8 +149,6 @@ submit.addEventListener("click",(e)=>{
      checkName(username);
     if(checkAll() === true ){
       window.location.href= "https://www.facebook.com/"
-    }else {
-      alert("Nhập hết mới được nha")
     }
 
     
