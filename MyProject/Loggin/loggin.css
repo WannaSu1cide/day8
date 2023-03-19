@@ -25,9 +25,9 @@ h1 {
 }
 .control__loggin {
     height:70px;
-    position: relative;
     margin-bottom:30px ;
     margin-top: 20px;
+    position:relative;
 }
 .Loggin__Email{
     width: 80%;
@@ -39,6 +39,7 @@ h1 {
     border-right: none;
     font-size: 22px;
     margin-left: 50px;
+    
     
 }
 ::placeholder {
@@ -53,6 +54,7 @@ h1 {
     cursor: pointer;
     border-radius: 25px;
     border: none;
+    margin-top: 5%;
 }
 .No__Account {
     margin-left: 100px;
@@ -75,9 +77,19 @@ h1 {
 .forget__account {
     margin-left: 170px;
     text-decoration: none;
-    color:black
+    color:blue;
 }
 .forget__account:hover {
     text-decoration: underline;
     color: blue;
+}
+.control__loggin small:first-of-type {
+    position: absolute;
+    left: 10%;
+    color: red;
+    font-size: 20px;
+    bottom: -25px;
+}
+.success {
+    color: lightgreen;
 }

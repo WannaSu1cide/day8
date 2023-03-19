@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Roboto:ital,wght@1,300&display=swap');
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.background{
+    height: 70%;
+    width: 70%;
+}
+.background img 
+{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.form {
+    
+    height: 400px;
+    width: 400px;
+    border: 1px solid;
+    border-radius:20px ;
+}
+h1{
+    font-size: 30px;
+    text-align: center;
+    margin-top:20px;
+}
+.input__forgot{
+    position: relative;
+}
+.input__forgot input{
+    height: 50px;
+    width: 80%;
+    margin: 10px 20px 10px 40px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid ;
+
+}
+
+.input__forgot span 
+{
+    height: 1px;
+    width: 0;
+    border: 1px solid #dadadada;
+    position: absolute;
+    bottom: 10px;
+    left: 40px;
+}
+
+input:focus ~span {
+    transition: 0.5s;
+    border: 1px solid lightgreen;
+    width: 80%;
+}
+.submit__btn{
+    width: 80%;
+    margin-left: 40px;
+    height: 60px;
+    text-align: center;
+    border-radius: 15px;
+    margin-top: 20px;
+    border: none;
+    font-size: 18px;
+}
+.submit__btn:hover{
+    background-color: lightblue;
+    color:white;
+}
+
+small {
+    position: absolute;
+    bottom: -5px;
+    left: 40px;
+    color:red;
+    display: none;
+}
+
+
+.error {
+    width: 80%;
+    transition: 0.5s;
+    border: 1px solid red ;
+}
+.show__message{
+    display: block;
+}
+
+.success{
+    color: lightgreen;
+    display: block;
+}
+
+.successBar {
+    transition: 0.5s;
+    border: 1px solid lightgreen;
+    width: 80%;
+}

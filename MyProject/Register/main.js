@@ -3,7 +3,7 @@ const username =document.querySelector("#Name");
 const password =document.querySelector("#password1");
 const confirmPassword =document.querySelector("#password2");
 const error = document.querySelectorAll(".control-form .error");
-const submit = document.querySelector(".submit")
+const submit = document.querySelector(".submit");
 const form = document.querySelector("form");
 const parent = document.querySelector(".control-form")
 const spanBar = document.querySelectorAll(".spanBar")
@@ -11,7 +11,6 @@ const inputs = document.querySelectorAll('input');
 
 
 function checkError(){
-
   for(let i = 0; i < inputs.length; i++) {
     if (inputs[i].value.length === 0) {
       showError(inputs[i], "Type something..");
@@ -68,6 +67,9 @@ function showSuccess (input, message){
           if(password.value.trim().length <=6 && password.value.trim().length > 0  ){
               showError(password,"Type more than 6 character");
               return false  
+       }else if(password.value.length ===0){
+          showError(password,"Type something....");
+          return false
        }
         if(password.value.trim().length > 6 ){
             showSuccess(password,"Success");
@@ -99,10 +101,10 @@ function showSuccess (input, message){
       let emailError = emailRegex.test(input.value);
       if (emailError === false) {
         showError(email,"Invalid email");
-        return false
+        return false;
       } else {
         showSuccess(email,"Success");
-        return true
+        return true;
       }
     }
     
@@ -110,17 +112,21 @@ function showSuccess (input, message){
 
 
 
-function saveNameToLocalStorage(email,password,username) {
-  localStorage.setItem('email', email);
-  localStorage.setItem("password",password);
-  localStorage.setItem("username",username);
+function saveNameToLocalStorage(email,username,password) {
 
+
+  const users = JSON.parse(localStorage.getItem('users')) || []
+
+  users.push({
+    email: email.value,
+    password : password.value,
+    username: username.value
+  })
+  
+  localStorage.setItem("user" ,JSON.stringify(users));
 }
 
-function getNameFromLocalStorage(){
-    localStorage.getItem("email");
-    localStorage.getItem("password");
-}
+
 function isNameInLocalStorage() {
   return localStorage.getItem('username') !== null&&
    localStorage.getItem('password') !== null &&
@@ -128,7 +134,7 @@ function isNameInLocalStorage() {
 }
 
   function checkAll(){
-    if(checkError()=== true && checkPassword() === true &&  isEmailError(email) === true && checkName(username) ){
+    if(checkError()=== true && checkPassword() === true &&  isEmailError(email) === true && checkName(username) && checkConfirmPassword()===true){
       return true
     }else {
       return false
@@ -147,15 +153,11 @@ submit.addEventListener("click",(e)=>{
      checkConfirmPassword();
      isEmailError(email);
      checkName(username);
+     
     if(checkAll() === true ){
-      window.location.href= "./loggin.html"
+      saveNameToLocalStorage(email,username,password)
+      window.location.href= "/MyProject/Loggin/loggin.html"
     }
-
-    
-    //  LoopCheckSuccess([email,username,password,confirmPassword])
-    //  if(LoopCheckSuccess([email,username,password,confirmPassword])){
-    //   window.location.href= "https://www.messenger.com/t/100016837833916"
-    //  }
     
     
 })
