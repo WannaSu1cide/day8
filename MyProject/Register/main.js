@@ -155,7 +155,7 @@ submit.addEventListener("click",(e)=>{
      checkName(username);
     if(checkAll() === true ){
       saveNameToLocalStorage(email,username,password)
-      window.location.href= "/Loggin/loggin.html"
+      window.location.href= "./loggin.html"
     }
     
     
