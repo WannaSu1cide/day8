@@ -87,7 +87,7 @@ function alert(){
     })) {
         confirm("are u remember all infomation ?")
         if( confirm("are u remember all infomation ?")){
-            window.location.href = "/Myproject/Loggin/loggin.html"
+            window.location.href = "/Loggin/loggin.html"
         }
     }
 
