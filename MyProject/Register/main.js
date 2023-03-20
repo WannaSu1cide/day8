@@ -99,7 +99,7 @@ function showSuccess (input, message){
       const emailRegex =
       /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
       let emailError = emailRegex.test(input.value);
-      if (emailError === false) {
+      if (emailError !== true) {
         showError(email,"Invalid email");
         return false;
       } else {
@@ -153,7 +153,6 @@ submit.addEventListener("click",(e)=>{
      checkConfirmPassword();
      isEmailError(email);
      checkName(username);
-     
     if(checkAll() === true ){
       saveNameToLocalStorage(email,username,password)
       window.location.href= "/Loggin/loggin.html"
