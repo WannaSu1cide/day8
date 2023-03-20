@@ -41,7 +41,7 @@ function showLogginError(){
 
         function checkSuccessAll(){
                 if(checkPasswordWrong() === true && showLogginError() === true){
-                       window.location.href ="/Myproject/Page/Mypage.html"
+                       window.location.href ="/Page/Mypage.html"
                 }else {
                         console.log("fail")
                 }
